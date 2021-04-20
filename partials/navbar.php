@@ -15,7 +15,7 @@ require __DIR__.'/../config/function.php';
 </head>
 
 <body>
-    <div class="w-screen min-h-screen bg-gray-300 flex flex-col justify-between">
+    <div class="w-screen min-h-screen bg-gray-100 flex flex-col justify-between">
         <nav class="w-screen bg-blue-300 flex shadow-lg flex-1 max-h-12">
             <div class="xl:container flex justify-between m-auto">
                 <div class="p-4 flex-1 flex justify-start">

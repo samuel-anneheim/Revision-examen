@@ -1,8 +1,18 @@
-<?php require __DIR__ . '/partials/navbar.php';
+<?php 
 
-$title = $_POST['title'] ?? '';
-$kind = $_POST['kind'] ?? '';
-$date = $_POST['date'] ?? '';
+require __DIR__ . '/partials/navbar.php';
+
+$id = $_GET['id'] ?? 0;
+
+global $db;
+$query = $db->prepare('SELECT* FROM book WHERE id = :id');
+$query->bindValue(':id', $id);
+$query->execute();
+$book = $query->fetch();
+
+$title = $_POST['title'] ?? $book['title'];
+$kind = $_POST['kind'] ?? $book['kind'];
+$date = $_POST['date'] ?? $book['publish_at'];
 
 $errors = [];
 
@@ -18,13 +28,14 @@ if (!empty($_POST)) {
     }
 
     if (empty($errors)) {
-        $query = $db->prepare('INSERT INTO book (title, kind, publish_at) VALUES (:title, :kind, :date)');
+        $query = $db->prepare('UPDATE book SET title = :title, kind = :kind, publish_at = :date WHERE id=:id');
         $query->bindvalue(':title', $title);
         $query->bindvalue(':kind', $kind);
         $query->bindvalue(':date', $date);
+        $query->bindValue(':id', $id);
         $query->execute();
 
-        header('location: book_add.php?success');
+        header('location: index.php?modif_success_book');
     }
 }
 
@@ -67,7 +78,7 @@ if (!empty($_POST)) {
                 </div>
             <?php } ?>
         </div>
-        <button>Envoyer</button>
+        <button>Modifier</button>
     </form>
 </section>
 

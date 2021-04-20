@@ -1,8 +1,16 @@
 <?php require __DIR__ . '/partials/navbar.php';
 
-$nom = $_POST['lastname'] ?? '';
-$prenom = $_POST['firstname'] ?? '';
-$date = $_POST['birthday'] ?? '';
+$id = $_GET['id'] ?? 0;
+
+global $db;
+$query = $db->prepare('SELECT * FROM writer WHERE id = :id');
+$query->bindValue(':id', $id);
+$query->execute();
+$writer = $query->fetch();
+
+$nom = $_POST['lastname'] ?? $writer['lastname'];
+$prenom = $_POST['firstname'] ?? $writer['firstname'];
+$date = $_POST['birthday'] ?? $writer['birthday'];
 
 $errors = [];
 
@@ -18,13 +26,14 @@ if (!empty($_POST)) {
     }
 
     if (empty($errors)) {
-        $query = $db->prepare('INSERT INTO writer (lastname, firstname, birthday) VALUES (:nom, :prenom, :date)');
+        $query = $db->prepare('UPDATE writer SET lastname = :nom, firstname = :prenom, birthday = :date WHERE id =:id');
         $query->bindvalue(':nom', $nom);
         $query->bindvalue(':prenom', $prenom);
         $query->bindvalue(':date', $date);
+        $query->bindvalue(':id', $id);
         $query->execute();
 
-        header('location: writer_add.php?success');
+        header('location: index.php?modif_success_writer');
     }
 }
 
@@ -67,7 +76,7 @@ if (!empty($_POST)) {
                 </div>
             <?php } ?>
         </div>
-        <button>Envoyer</button>
+        <button>Modifier</button>
     </form>
 </section>
 
