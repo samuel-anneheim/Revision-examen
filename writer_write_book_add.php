@@ -1,4 +1,8 @@
-<?php require __DIR__ . '/partials/navbar.php';
+<?php 
+ob_start();
+
+require __DIR__ . '/partials/navbar.php';
+
 
 global $db;
 
@@ -24,7 +28,7 @@ if (!empty($_POST)) {
                     $query->bindvalue(':writer', $id_author);
                     $query->execute();
 
-                    break 2;
+                    header('location: index.php?success_affiliation');
                 }
             }
         }

@@ -20,6 +20,11 @@
             <span>Modification success book</span>
         </div>
     <?php } ?>
+    <?php if (isset($_GET['success_affiliation'])) { ?>
+        <div class="bg-green-400 text-gray-800 h12 w-90 text-center">
+            <span>affiliation success</span>
+        </div>
+    <?php } ?>
 
 <section class="list flex justify-around ">
 
