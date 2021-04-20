@@ -26,7 +26,7 @@
         </div>
     <?php } ?>
 
-<section class="list flex justify-around ">
+<section class="list flex justify-around items-center ">
 
 
     <table class="m-8 w-50 text-center border-collapse  border border-gray-700 ">
