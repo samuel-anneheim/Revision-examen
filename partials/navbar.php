@@ -22,6 +22,7 @@ require __DIR__.'/../config/function.php';
                     <a href="./index.php" class="px-4">Home</a>
                     <a href="./book_add.php" class="px-4">Ajout livre</a>
                     <a href="./writer_add.php" class="px-4">Ajout ecrivain</a>
+                    <a href="./writer_write_book_add.php" class="px-4">Relier livre ecrivain</a>
                 </div>
                 <div class="p-4  flex justify-end">
                     <a href="" class="block w-1">Dashboard</a>
