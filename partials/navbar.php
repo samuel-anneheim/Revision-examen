@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/../config/database.php';
+require __DIR__.'/../config/function.php';
 ?>
 
 <!DOCTYPE html>
@@ -14,15 +15,16 @@ require __DIR__ . '/../config/database.php';
 </head>
 
 <body>
-    <div class="w-screen min-h-screen bg-gray-300 flex flex-col">
+    <div class="w-screen min-h-screen bg-gray-300 flex flex-col justify-between">
         <nav class="w-screen bg-blue-300 flex shadow-lg flex-1 max-h-12">
             <div class="xl:container flex justify-between m-auto">
                 <div class="p-4 flex-1 flex justify-start">
-                    <a href="./index.php" class="flex-1">Home</a>
-                    <a href="./book_add.php" class="flex-1">Ajout</a>
+                    <a href="./index.php" class="px-4">Home</a>
+                    <a href="./book_add.php" class="px-4">Ajout livre</a>
+                    <a href="./writer_add.php" class="px-4">Ajout ecrivain</a>
                 </div>
-                <div class="p-4 flex-1 flex justify-end">
-                    <a href="" class="flex-1 block w-1">Dashboard</a>
+                <div class="p-4  flex justify-end">
+                    <a href="" class="block w-1">Dashboard</a>
                 </div>
             </div>
         </nav>
